@@ -1,7 +1,7 @@
 from posts import ListPostsHandler, ListPostsByTagHandler, RetrievePostHandler, ArchiveHandler, FeedHandler
 from links import ListLinksHandler
 from others import AkarinHandler, NotFoundHandler, HitokotoHandler
-from background import SignInHandler, ManagePostHandler, AddLinkHandler, AddPostHandler
+from background import SignInHandler, ManagePostHandler, AddLinkHandler, AddPostHandler, FileReadHandler
 from diaries import RetrieveDiaryHandler, ListDiariesHandler
 
 
@@ -26,6 +26,7 @@ handlers = [
     (r'/kamisama/posts', ManagePostHandler),
     (r'/kamisama/posts/add', AddPostHandler),
     (r'/kamisama/links', AddLinkHandler),
+    (r'/kamisama/fileread', FileReadHandler),
 
     # others.py
     (r'/akarin', AkarinHandler),
