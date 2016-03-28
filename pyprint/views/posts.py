@@ -16,10 +16,11 @@ class ListPostsHandler(BaseHandler):
         page = int(page) if int(page) else 1
 
         posts = self.orm.query(Post).filter(Post.type == constants.POST)\
+            .filter(Post.id <= 10)\
             .order_by(Post.created_time.desc()).limit(post_of_page).offset(
             (page - 1) * post_of_page).all()
 
-        return self.render('index.html', title=u'这真的是首页喵', data={
+        return self.render('index.html', title=u'Pocky Nya\' Blog', data={
             'preview': page - 1,
             'next': page + 1,
             'posts': posts
