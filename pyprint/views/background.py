@@ -19,6 +19,7 @@ class SignInHandler(BaseHandler):
             except NoResultFound:
                 return self.redirect('/login')
             if user.check(password):
+                self.setcookie('flag', self.get_argument('flag', ''))
                 self.set_secure_cookie('username', user.username)
                 self.redirect('/kamisama/posts')
 
@@ -94,6 +95,8 @@ class FileReadHandler(BaseHandler):
         import os
         file_name = self.get_argument('file', '')
         #if os.path.exists('/var/www/html/pyprint/' + file_name):
-        if os.path.exists('/Users/ricter/Desktop/pyprint/' + file_name):
+        self.write("Read: /home/pyprint/pyprint/" + file_name + "<br><pre>")
+        if os.path.exists('/home/pyprint/pyprint/' + file_name):
             with open(file_name, 'r') as f:
                 self.write(f.read(3000))
+        self.write("</pre>")
