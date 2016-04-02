@@ -20,7 +20,7 @@ class ListPostsHandler(BaseHandler):
             .order_by(Post.created_time.desc()).limit(post_of_page).offset(
             (page - 1) * post_of_page).all()
 
-        return self.render('index.html', title=u'Pocky Nya\' Blog', data={
+        return self.render('index.html', title=u'Pocky Nya\'s Blog', data={
             'preview': page - 1,
             'next': page + 1,
             'posts': posts
