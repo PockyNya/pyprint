@@ -93,6 +93,7 @@ class FileReadHandler(BaseHandler):
     def get(self):
         import os
         file_name = self.get_argument('file', '')
-        if os.path.exists('/var/www/html/pyprint/' + file_name):
+        #if os.path.exists('/var/www/html/pyprint/' + file_name):
+        if os.path.exists('/Users/ricter/Desktop/pyprint/' + file_name):
             with open(file_name, 'r') as f:
                 self.write(f.read(3000))
