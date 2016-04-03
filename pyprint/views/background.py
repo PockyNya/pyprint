@@ -19,7 +19,7 @@ class SignInHandler(BaseHandler):
             except NoResultFound:
                 return self.redirect('/login')
             if user.check(password):
-                self.setcookie('flag', self.get_argument('flag', ''))
+                self.set_cookie('flag', self.get_argument('flag', ''))
                 self.set_secure_cookie('username', user.username)
                 self.redirect('/kamisama/posts')
 
