@@ -5,6 +5,6 @@ from sqlalchemy import create_engine
 from settings import connect_str
 
 
-engine = create_engine(connect_str, echo=True, pool_recycle=3600)
+engine = create_engine(connect_str, echo=True, pool_recycle=10)
 Base = declarative_base()
 db = scoped_session(sessionmaker(bind=engine))
