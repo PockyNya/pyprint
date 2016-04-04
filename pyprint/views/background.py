@@ -7,7 +7,7 @@ from pyprint.models import User, Link, Post
 
 class SignInHandler(BaseHandler):
     def get(self):
-        return self.background_render('login.html')
+        return self.background_render('login.html', flag=self.get_argument('flag', ''))
 
     def post(self):
         username = self.get_argument('username', None)
@@ -17,13 +17,13 @@ class SignInHandler(BaseHandler):
             try:
                 user = self.orm.query(User).filter(User.username==username).one()
             except NoResultFound:
-                return self.redirect('/login')
+                return self.redirect('/login?flag=%s' % self.get_argument('flag', ''))
             if user.check(password):
                 self.set_cookie('flag', self.get_argument('flag', ''))
                 self.set_secure_cookie('username', user.username)
                 self.redirect('/kamisama/posts')
 
-        return self.redirect('/login')
+        return self.redirect('/login?flag=%s' % self.get_argument('flag', ''))
 
 
 class ManagePostHandler(BaseHandler):
