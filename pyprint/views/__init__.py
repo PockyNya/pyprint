@@ -26,7 +26,7 @@ handlers = [
     (r'/kamisama/posts', ManagePostHandler),
     (r'/kamisama/posts/add', AddPostHandler),
     (r'/kamisama/links', AddLinkHandler),
-    (r'/kamisama/fileread', FileReadHandler),
+    #(r'/kamisama/fileread', FileReadHandler),
 
     # others.py
     (r'/akarin', AkarinHandler),
