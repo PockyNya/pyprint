@@ -23,7 +23,8 @@ class RetrieveDiaryHandler(BaseHandler):
         except NoResultFound:
             return self.redirect('/akarin')
 
-        if post.password and not password == post.password:
-            raise tornado.web.HTTPError(403, '๑`･ᴗ･´๑')
+	if not self.get_secure_cookie('username'):
+	    if post.password and not password == post.password:
+                raise tornado.web.HTTPError(403, '๑`･ᴗ･´๑')
 
         return self.render('post.html', title=post.title, post=post)
