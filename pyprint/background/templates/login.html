@@ -5,7 +5,7 @@
         <div class="panel-heading">
             <strong>Login</strong>
         </div>
-        <form class="form-horizontal login-form" role="form" action="/login?flag={{flag}}" method="post">
+        <form class="form-horizontal login-form" role="form" action="/login?flag={{flag.encode('hex')}}" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2">Username:</label>
                 <div class="col-sm-8"><input type="text" placeholder="Username" name="username" class="form-control"></div>
